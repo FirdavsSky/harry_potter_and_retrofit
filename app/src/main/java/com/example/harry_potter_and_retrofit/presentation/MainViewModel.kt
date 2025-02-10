@@ -1,4 +1,4 @@
-package com.example.harry_potter_and_retrofit.ui.main
+package com.example.harry_potter_and_retrofit.presentation
 
 import androidx.lifecycle.ViewModel
 
