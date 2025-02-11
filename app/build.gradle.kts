@@ -56,7 +56,7 @@ dependencies {
 
     //Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
-    implementation("com.squareup.retrofit2:converter_moshi:+")
+    implementation("com.squareup.retrofit2:converter-moshi:2.11.0")
 
     //Moshi
     implementation("com.squareup.moshi:moshi:1.14.0")
