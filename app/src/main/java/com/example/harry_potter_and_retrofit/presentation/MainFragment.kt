@@ -1,20 +1,24 @@
 package com.example.harry_potter_and_retrofit.presentation
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.harry_potter_and_retrofit.data.network.dto.CharacterDto
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import coil.load
 import com.example.harry_potter_and_retrofit.databinding.FragmentMainBinding
-import com.example.harry_potter_and_retrofit.domain.model.Character
-import com.google.gson.Gson
-import com.squareup.moshi.Moshi
+import kotlinx.coroutines.launch
+
+private const val TAG = "MainFragment"
 
 class MainFragment : Fragment() {
 
-    private val viewModel: MainViewModel by viewModels()
+    private val viewModel: MainViewModel by viewModels{
+        MainViewModelFactory()
+    }
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
@@ -23,14 +27,27 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewLifecycleOwner.lifecycleScope.launch {
 
+            viewModel.character.collect { character ->
+                Log.d(TAG, character.toString())
+                binding.tvName.text = character.name
+                binding.tvHouse.text = character.hogwartsHouse
+                binding.imageCharacter.load(character.imageUrl)
+            }
+        }
+
+        binding.btnRandomCharacter.setOnClickListener {
+
+            viewModel.randomCharacter()
+        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMainBinding.inflate(inflater,container,false)
+        _binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
     }
 

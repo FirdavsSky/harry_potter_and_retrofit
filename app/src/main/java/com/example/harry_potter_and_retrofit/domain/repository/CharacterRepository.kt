@@ -1,10 +1,10 @@
 package com.example.harry_potter_and_retrofit.domain.repository
 
-import com.example.harry_potter_and_retrofit.domain.model.Character
+import com.example.harry_potter_and_retrofit.domain.model.CharacterModel
 
 interface CharacterRepository {
 
-    fun getCharacters(): List<Character>
+    suspend fun getCharacters(): List<CharacterModel>
 
-    fun getCharacterById(id: Int): Character
+    suspend fun getCharacterById(id: Int): CharacterModel
 }

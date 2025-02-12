@@ -59,10 +59,17 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-moshi:2.11.0")
 
     //Moshi
-    implementation("com.squareup.moshi:moshi:1.14.0")
-    implementation("com.squareup.moshi:moshi-kotlin:1.14.0")
-    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.14.0")
+    implementation("com.squareup.moshi:moshi:1.15.0")
+    implementation("com.squareup.moshi:moshi-kotlin:1.15.0")
+    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.15.0")
 
     //Gson
     implementation("com.google.code.gson:gson:2.10.1")
+
+    //OkHttp
+    implementation("com.squareup.okhttp3:okhttp:3.14.9")
+    implementation("com.squareup.okhttp3:logging-interceptor:3.14.9")
+
+    //Coil
+    implementation("io.coil-kt:coil:0.13.0")
 }
